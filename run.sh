@@ -2,15 +2,6 @@
 # Script to start the job server
 set -e
 
-if [ -z "$JOB_SERVER_CONFIG_URI" ]; then
-  echo "JOB_SERVER_CONFIG_URI must be set"
-  exit 1
-fi
-
-# First fetch the config
-echo "Fetching config from ${JOB_SERVER_CONFIG_URI}"
-wget -q -O conf/production.conf $JOB_SERVER_CONFIG_URI
-
 # Run the server
 get_abs_script_path() {
   pushd . >/dev/null
@@ -20,6 +11,15 @@ get_abs_script_path() {
 }
 
 get_abs_script_path
+
+if [ -z "$JOB_SERVER_CONFIG_URI" ]; then
+  echo "JOB_SERVER_CONFIG_URI must be set"
+  exit 1
+fi
+
+# First fetch the config
+echo "Fetching config from ${JOB_SERVER_CONFIG_URI}"
+wget -O $appdir/conf/production.conf $JOB_SERVER_CONFIG_URI
 
 GC_OPTS="-XX:+UseConcMarkSweepGC
          -verbose:gc -XX:+PrintGCTimeStamps -Xloggc:$appdir/gc.out
