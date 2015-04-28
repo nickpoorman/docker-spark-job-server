@@ -18,6 +18,9 @@ RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list
     apt-get install -y --force-yes \
       sbt
 
+# run sbt once to cache all the crap it needs
+RUN sbt version
+
 # build the job-server
 RUN cd /tmp/spark-job-server && \
     : ${SCALA_VERSION:=2.10.5} && \
