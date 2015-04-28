@@ -32,8 +32,6 @@ RUN cd /tmp/sjs && \
 
 WORKDIR /tmp/job-server
 
-ADD https://raw.githubusercontent.com/nickpoorman/docker-spark-job-server/master/run.sh /tmp/job-server/
-
-RUN chmod +x /tmp/job-server/run.sh
+ADD run.sh /tmp/job-server/
 
 ENTRYPOINT ["/tmp/job-server/run.sh"]
