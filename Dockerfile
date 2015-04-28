@@ -36,5 +36,4 @@ ADD https://raw.githubusercontent.com/nickpoorman/docker-spark-job-server/master
 
 RUN chmod +x /tmp/job-server/run.sh
 
-# ENTRYPOINT ["/tmp/job-server/run.sh"]
-ENTRYPOINT ["/bin/bash"]
+ENTRYPOINT ["/tmp/job-server/run.sh"]

@@ -2,7 +2,7 @@
 # Script to start the job server
 set -e
 
-echo "Test 2"
+echo "Test 3"
 
 # Run the server
 get_abs_script_path() {
@@ -21,7 +21,7 @@ fi
 
 # First fetch the config
 echo "Fetching config from ${JOB_SERVER_CONFIG_URI}"
-saveTo="${appdir}/conf/production.conf"
+saveTo="${appdir}/production.conf"
 echo "Saving config to: ${saveTo}"
 wget -O $saveTo $JOB_SERVER_CONFIG_URI
 
