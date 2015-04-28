@@ -16,7 +16,7 @@ RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list
 
 # Docker has a problem with long filenames, add this to the global.sbt settings:
 RUN mkdir -p /root/.sbt/0.13/
-RUN echo 'scalacOptions ++= Seq("-Xmax-classfile-name","240")' > /root/.sbt/0.13/global.sbt
+RUN echo 'scalacOptions ++= Seq("-Xmax-classfile-name","200")' > /root/.sbt/0.13/global.sbt
 
 # run sbt once to cache all the crap it needs
 RUN sbt version
