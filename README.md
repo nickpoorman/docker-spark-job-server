@@ -16,13 +16,13 @@ After setup this "essentially" runs the [start script](https://github.com/spark-
 
 ```
 docker run -it \
-    -e "SPARK_HOME=/tmp/spark" \
-    -e "SPARK_EXECUTOR_URI=" \
-    -e "APP_USER=spark" \
-    -e "APP_GROUP=spark" \
-    -e "INSTALL_DIR=/tmp/job-server" \
-    -e "SCALA_VERSION=2.10.5" \
-    -e "SPARK_HOME=/tmp/spark" \
-    -e "SPARK_CONF_DIR=/tmp/spark/conf" \
+    -e SPARK_HOME=/tmp/spark \
+    -e SPARK_EXECUTOR_URI= \
+    -e APP_USER=spark \
+    -e APP_GROUP=spark \
+    -e INSTALL_DIR=/tmp/job-server \
+    -e SCALA_VERSION=2.10.5 \
+    -e SPARK_HOME=/tmp/spark \
+    -e SPARK_CONF_DIR=/tmp/spark/conf \
     nickpoorman/docker-spark-job-server
 ```
