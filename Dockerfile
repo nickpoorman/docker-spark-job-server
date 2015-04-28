@@ -24,8 +24,11 @@ RUN cd /tmp/spark-job-server && \
     : ${SPARK_HOME:=/tmp/spark} && \
     echo SCALA_VERSION=${SCALA_VERSION} > config/env.sh && \
     echo SPARK_HOME=${SPARK_HOME} >> config/env.sh && \
+    _JAVA_OPTIONS=$(cat .jvmopts) && \
     ./bin/server_package.sh env
 
 WORKDIR /tmp/job-server
 
-ENTRYPOINT ["/tmp/job-server/server_start.sh"]
+ADD run.sh /tmp/job-server/
+
+ENTRYPOINT ["/tmp/job-server/run.sh"]
