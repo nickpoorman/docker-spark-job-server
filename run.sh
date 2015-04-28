@@ -2,6 +2,8 @@
 # Script to start the job server
 set -e
 
+echo "Test 1"
+
 # Run the server
 get_abs_script_path() {
   pushd . >/dev/null
