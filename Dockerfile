@@ -1,4 +1,4 @@
-# docker-spark-postgresql-base
+# docker-spark-job-server
 #
 # VERSION 0.0.1
 
@@ -18,12 +18,12 @@ RUN echo "deb http://dl.bintray.com/sbt/debian /" | tee -a /etc/apt/sources.list
 RUN sbt version
 
 # download the job-server source
-RUN mkdir /tmp/spark-job-server && \
-    cd /tmp/spark-job-server && \
+RUN mkdir /tmp/sjs && \
+    cd /tmp/sjs && \
     wget -qO- https://github.com/nextglass/spark-jobserver/archive/v0.5.1-SNAPSHOT-4.27.2015.tar.gz | tar -xz --strip-components=1
 
 # build the job-server
-RUN cd /tmp/spark-job-server && \
+RUN cd /tmp/sjs && \
     : ${SCALA_VERSION:=2.10.5} && \
     : ${SPARK_HOME:=/tmp/spark} && \
     printf "SCALA_VERSION=${SCALA_VERSION}\nSPARK_HOME=${SPARK_HOME}\n" > config/env.sh && \
@@ -33,5 +33,7 @@ RUN cd /tmp/spark-job-server && \
 WORKDIR /tmp/job-server
 
 ADD run.sh /tmp/job-server/
+
+RUN chmod +x /tmp/job-server/run.sh
 
 ENTRYPOINT ["/tmp/job-server/run.sh"]
