@@ -21,7 +21,7 @@ fi
 echo "Fetching config from ${JOB_SERVER_CONFIG_URI}"
 saveTo="${appdir}/production.conf"
 echo "Saving config to: ${saveTo}"
-wget -O $saveTo $JOB_SERVER_CONFIG_URI
+wget -qO $saveTo $JOB_SERVER_CONFIG_URI
 
 GC_OPTS="-XX:+UseConcMarkSweepGC
          -verbose:gc -XX:+PrintGCTimeStamps -Xloggc:$appdir/gc.out
