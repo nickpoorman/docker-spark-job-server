@@ -25,8 +25,7 @@ RUN sbt version
 RUN cd /tmp/spark-job-server && \
     : ${SCALA_VERSION:=2.10.5} && \
     : ${SPARK_HOME:=/tmp/spark} && \
-    echo SCALA_VERSION=${SCALA_VERSION} > config/env.sh && \
-    echo SPARK_HOME=${SPARK_HOME} >> config/env.sh && \
+    printf "SCALA_VERSION=${SCALA_VERSION}\nSPARK_HOME=${SPARK_HOME}\n" > config/env.sh && \
     _JAVA_OPTIONS=$(cat .jvmopts) && \
     ./bin/server_package.sh env
 
