@@ -23,8 +23,10 @@ saveTo="${appdir}/production.conf"
 echo "Saving config to: ${saveTo}"
 wget -qO $saveTo $JOB_SERVER_CONFIG_URI
 
+# -verbose:gc -XX:+PrintGCTimeStamps -Xloggc:$appdir/gc.out
+
 GC_OPTS="-XX:+UseConcMarkSweepGC
-         -verbose:gc -XX:+PrintGCTimeStamps -Xloggc:$appdir/gc.out
+         -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps
          -XX:MaxPermSize=512m
          -XX:+CMSClassUnloadingEnabled "
 
