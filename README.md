@@ -20,9 +20,9 @@ docker -H tcp://${HOST_IP_0}:2375 run -it \
     -e APP_USER=root \
     -e APP_GROUP=root \
     -e SCALA_VERSION=2.10.5 \
-    -e SPARK_HOME=/tmp/spark \
-    -e SPARK_CONF_DIR=/tmp/spark/conf \
-    -e INSTALL_DIR=/tmp/job-server \
+    -e SPARK_HOME=/spark \
+    -e SPARK_CONF_DIR=/spark/conf \
+    -e INSTALL_DIR=/job-server \
     -e JOB_SERVER_CONFIG_URI=https://raw.githubusercontent.com/nextglass/spark-jobserver/master/job-server/config/local.conf.template \
     -p 8090:8090 \
     -p 9999:9999 \
