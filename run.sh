@@ -96,4 +96,5 @@ export SPARK_HOME
 # need to explicitly include app dir in classpath so logging configs can be found
 CLASSPATH="$appdir:$appdir/spark-job-server.jar:$($SPARK_HOME/bin/compute-classpath.sh)"
 
-exec java -cp $CLASSPATH $GC_OPTS $JAVA_OPTS $LOGGING_OPTS $CONFIG_OVERRIDES $MAIN $conffile
+# exec java -cp $CLASSPATH $GC_OPTS $JAVA_OPTS $LOGGING_OPTS $CONFIG_OVERRIDES $MAIN $conffile
+exec java -cp $CLASSPATH $JAVA_OPTS $LOGGING_OPTS $CONFIG_OVERRIDES $MAIN $conffile
