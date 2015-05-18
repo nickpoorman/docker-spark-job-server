@@ -25,6 +25,7 @@ wget -qO $saveTo $JOB_SERVER_CONFIG_URI
 
 # -verbose:gc -XX:+PrintGCTimeStamps -Xloggc:$appdir/gc.out
 
+# the gc options are needed to load and unload the jobs being called
 GC_OPTS="-XX:+UseConcMarkSweepGC
          -verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps
          -XX:MaxPermSize=512m
@@ -96,5 +97,5 @@ export SPARK_HOME
 # need to explicitly include app dir in classpath so logging configs can be found
 CLASSPATH="$appdir:$appdir/spark-job-server.jar:$($SPARK_HOME/bin/compute-classpath.sh)"
 
-# exec java -cp $CLASSPATH $GC_OPTS $JAVA_OPTS $LOGGING_OPTS $CONFIG_OVERRIDES $MAIN $conffile
-exec java -cp $CLASSPATH $JAVA_OPTS $LOGGING_OPTS $CONFIG_OVERRIDES $MAIN $conffile
+exec java -cp $CLASSPATH $GC_OPTS $JAVA_OPTS $LOGGING_OPTS $CONFIG_OVERRIDES $MAIN $conffile
+# exec java -cp $CLASSPATH $JAVA_OPTS $LOGGING_OPTS $CONFIG_OVERRIDES $MAIN $conffile
