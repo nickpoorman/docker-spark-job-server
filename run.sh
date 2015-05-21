@@ -33,9 +33,14 @@ GC_OPTS="-XX:+UseConcMarkSweepGC
 
 JAVA_OPTS="-Xmx5g -XX:MaxDirectMemorySize=512M
            -XX:+HeapDumpOnOutOfMemoryError -Djava.net.preferIPv4Stack=true
-           -Dcom.sun.management.jmxremote.port=9999
            -Dcom.sun.management.jmxremote.authenticate=false
            -Dcom.sun.management.jmxremote.ssl=false"
+
+if [ "$JMXPORT" != "" ]; then
+  JAVA_OPTS+=" -Dcom.sun.management.jmxremote.port=${JMXPORT}"
+else
+  JAVA_OPTS+=" -Dcom.sun.management.jmxremote.port=9999"
+fi
 
 MAIN="spark.jobserver.JobServer"
 
